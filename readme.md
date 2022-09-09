@@ -21,7 +21,7 @@ There is an online demo at: <https://weare-test.testbed.youridentityplatform.biz
 
 ## Running
 
-### Run locally
+### Build locally
 
     docker build -t auth-proxy .
     docker run --rm -p 8080:80 --name auth-proxy auth-proxy
