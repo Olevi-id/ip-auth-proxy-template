@@ -37,8 +37,8 @@ By default, the container is set to access WeAre Demonstration IdP instance. The
 Alternate method to allow access to IdP running on localhost:
 
     docker run --rm -p 8080:80 \
-        --add-host idbroker:172.17.0.1 \
-        --env IDP_URL=http://idbp-url \
+        --add-host idp:172.17.0.1 \
+        --env IDP_URL=http://idp \
         --env IDP_LOCAL_URL=http://localhost \
         --env MY_CLIENT_ID=your-client-id \
         --name auth-proxy auth-proxy
@@ -46,6 +46,10 @@ Alternate method to allow access to IdP running on localhost:
 Make note that you need to make the host network visible to the container with the made up name so that it can 
 interact with the identity broker running locally in another container. Above is two methods to accomplish that. 
 See [this](https://docs.docker.com/desktop/networking/) Docker Desktop documentation page.
+
+### Run from Dockerhub
+
+    docker run --rm -p 8080:80 klaalo/ip-auth-proxy-template:main
 
 ## TODO: Authentication method selection
 
