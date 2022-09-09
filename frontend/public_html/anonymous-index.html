@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+
+  <!-- Bootstrap and JQuery stuff -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+  <title>Authproxy</title>
+
+</head>
+
+<body class="d-flex flex-column vh-100">
+  <header>
+    <nav class="navbar navbar-light bg-light" style="margin-bottom: 2em;">
+      <img class="main-logo" src="/images/weare_icon.svg" 
+            alt="WeAre logo looks a bit like letter W" 
+            style="height: 3em; margin-left: 0.5em; margin-right: 0.5em;"/>     
+      <div class="collapse navbar-collapse d-flex justify-content-end">
+      </div>
+    </nav>
+  </header>
+  
+  <main>
+  <div class="container">
+    <div class="col-md-4">
+      <h5>Authproxy</h5>
+      <p>Choose authentication method</p>
+      <ul class="list-group">
+        <li class="list-group-item text-center"><a href="/secret/">
+          <button type="submit" id="dafaultAuth" class="btn btn-primary">Default</button>
+        </a>
+        </li>
+        <li class="list-group-item text-center"><a href="/customauth/">
+          <button type="submit" id="customAuth" class="btn btn-primary">Custom</button>
+        </a>
+        </li>
+      </ul>
+
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer mt-auto bg-light">
+  <div class="container">
+      <div class="d-flex justify-content-center align-items-center" >
+          <p class="opacity-50" style="margin-top: 0.5em; margin-bottom: 0.5em;"><small>WeAre Solutions Oy demo template</small></p>
+      </div>
+  </div>
+</footer>
+
+  <script>
+    $(function() {
+      let params = new URLSearchParams(window.location.search);
+      if (params.has('logout')) {
+        window.location.replace('<IDP_LOCAL_URL>/idp/profile/Logout');
+      }
+    });
+  </script>
+
+
+</body>
+
+</html>

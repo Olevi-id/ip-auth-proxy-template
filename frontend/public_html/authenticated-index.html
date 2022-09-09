@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+
+  <!-- Bootstrap nad JQuery stuff -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+  <title>Authproxy</title>
+
+  </head>
+  <body class="d-flex flex-column vh-100">
+    <header>
+      <nav class="navbar navbar-light bg-light" style="margin-bottom: 2em;">
+        <img class="main-logo" src="/images/weare_icon.svg" 
+              alt="WeAre logo näyttää W-kirjaimelta" 
+              style="height: 3em; margin-left: 0.5em; margin-right: 0.5em;"/>     
+        <div class="collapse navbar-collapse d-flex justify-content-end">
+        </div>
+      </nav>
+    </header>
+  
+    <main>
+    <div class="container">
+
+      <div class="col-md-8">
+        <h5 >Authproxy - user authenticated</h5>
+        <p>Check your details below or logout<a href="/return?logout=/?logout=true">with this link</a> or the link below.</p>
+      </div>
+
+
+      <div class="row">
+
+        <div class="col-md-12 modal-body">
+          <p>
+            <table class="table">
+            </table>
+          </p>
+        </div>
+        <div class="col-md-12 modal-body">
+          <p><a href="/return?logout=/?logout=true">
+            <i class="bi-box-arrow-right"></i> Logout
+          </a></p>
+        </div>
+        </div>
+      </div>
+  </main>
+  
+
+    <footer class="footer mt-auto bg-light">
+      <div class="container">
+          <div class="d-flex justify-content-center align-items-center" >
+              <p class="opacity-50" style="margin-top: 0.5em; margin-bottom: 0.5em;"><small>WeAre Solutions Oy demo template</small></p>
+          </div>
+      </div>
+    </footer>
+    
+    <script>
+      console.log('Fetching User Attributes');
+      $.getJSON("/userAttributes/", function(data) {
+        console.log('Succeeded.');
+        $("table").first().empty();
+        data.forEach(key => {
+             $("table").first().append("<tr><th scope='row'>" + Object.keys(key)[0] + "</th><td>" + Object.values(key)[0] + "</td></tr>");
+         });
+     }).fail(function (jqXHR, textStatus, errorThrown) {
+        console.log('Failed.');
+        console.log('jqXHR: ', jqXHR);
+        console.log('code: ', jqXHR ? jqXHR.status : undefined);
+        console.log('textStatus: ', textStatus);
+        console.log('errorThrown: ', errorThrown);
+        if (jqXHR && jqXHR.status === 401) {
+          window.location.reload();
+        }
+
+      });
+    </script>
+  </body>
+</html>
