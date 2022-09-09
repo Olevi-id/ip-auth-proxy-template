@@ -15,6 +15,8 @@ We invented almost nothing ourselves. This tool is based:
 
 ## Demonstration only
 
+This is only an example of one possible way of protecting an application with authentication.
+
 You should evaluate every aspect of this tool **VERY CAREFULLY** before using in production. This is only a demonstration on how to protect your application with authentication. This tool *does not* consider all aspects of information security, but you need to have a hold on your own implementation and deployment.
 
 There is an online demo at: <https://weare-test.testbed.youridentityplatform.biz>
